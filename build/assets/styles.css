@@ -1,0 +1,16 @@
+html {
+  font-family: 'VT323', monospace;
+}
+.wrapper {
+  background-color: #f7f7f7;
+  padding: 10px;
+  height: 600px;
+  width: 100%;
+}
+.console {
+  color: green;
+  background-color: #000;
+  height: 100px;
+  padding: 10px;
+  width: 100%;
+}
