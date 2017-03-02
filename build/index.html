@@ -9,12 +9,74 @@
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
   </head>
   <body>
-    <div class="wrapper">
-      <h3>Welcome stranger!</h3>
+    <div class="intro">
+      <h1>Javascript Warrior</h1>
+      <div class="warriors">
+        <img src="assets/images/warrior.png" alt="warrior" />
+        <img src="assets/images/monster.png" alt="monster" />
+      </div>
+      <button id="start" class="button">START</button>
     </div>
-    <div class="console">
-      <p>HOLA SOY UNA PRUEBA</p>
+    <div class="scenario hidden">
+      <div class="wrapper">
+        <div class="container">
+          <h2>Select your Hero</h2>
+          <div class="cards">
+            <div class="card">
+              <img src="assets/images/warrior1.jpg" alt="warrior1" />
+              <div class="info">
+                <div>
+                  <ul>
+                    <li>Name: <span>The Butcher</span></li>
+                    <li>Attack: <span>50</span></li>
+                    <li>Defense: <span>20</span></li>
+                    <li>Health: <span>100</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="assets/images/warrior2.jpg" alt="warrior2" />
+              <div class="info">
+                <div>
+                  <ul>
+                    <li>Name: <span>Nightmare</span></li>
+                    <li>Attack: <span>30</span></li>
+                    <li>Defense: <span>20</span></li>
+                    <li>Health: <span>100</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="assets/images/warrior3.jpg" alt="warrior3" />
+              <div class="info">
+                <div>
+                  <ul>
+                    <li>Name: <span>Akara</span></li>
+                    <li>Attack: <span>20</span></li>
+                    <li>Defense: <span>50</span></li>
+                    <li>Health: <span>100</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="console">
+        <div class="container">
+          <p>Welcome to Javascript warriors, please select your hero to join this dangerous journey!.</p>
+          <p>Tip: More health more oportunities to receive attacks.</p>
+          <p>Tip: More attack is better to get quickly victories.</p>
+        </div>
+      </div>
     </div>
+    <div class="gameover hidden">
+      <h1>Game Over</h1>
+      <button id="restart" class="button">RESTART</button>
+    </div>
+    
     <script type="text/javascript" src="bundle.js"></script>
   </body>
 </html>

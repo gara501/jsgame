@@ -1,5 +1,6 @@
 import { apiGame } from "./game.js";
 import { apiCharacters } from "./characters.js";
+import { apiScreen } from "./screen.js";
 
 
 var api =  new apiCharacters();
@@ -49,3 +50,6 @@ newGame.restart({player1: ryu, player2: akuma});
 console.log('HEROE', ryu);
 console.log('HEROE 2', ken);
 console.log('villano', akuma);
+
+var soundIntro = new Audio('assets/music/intro.mp3');
+//soundIntro.play();
