@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 import { apiGame } from "./game.js";
 import { apiCharacters } from "./characters.js";
 import { apiScreen } from "./screen.js";
