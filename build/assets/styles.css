@@ -124,7 +124,8 @@ html, body {
   radial-gradient(circle at 0    50%, white 5%, black 6%, black 15%, white 16%, white 20%, black 21%, black 30%, white 31%, white 35%, black 36%, black 45%, white 46%, white 49%, transparent 50%, transparent);
   background-size:100px 50px;
   border: 10px solid hsla(0, 0%, 100%, .5);
-  border-radius: .5rem; 
+  border-radius: .5rem;
+  transition: all .2s; 
   width: 30%;
   max-width: 283px;
 }
@@ -142,6 +143,10 @@ html, body {
 
 .wrapper .cards .card .info div {
   padding: .5em;
+}
+
+.wrapper .cards .card:hover {
+  border: 12px solid hsla(360, 100%, 50%, 1);
 }
 
 .wrapper h2 {

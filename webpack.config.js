@@ -15,6 +15,10 @@ module.exports = {
           babelrc: false
           }
       }]
+    },
+    {
+      test: /\.json$/,
+      loader: "json-loader"
     }]
   },
   devServer: {

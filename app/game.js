@@ -1,5 +1,6 @@
 // Using Module Pattern
 'use strict';
+
 var Game = (function (options) {
   function hitEnemy(options) {
     var sender = options.sender;
@@ -24,6 +25,7 @@ var Game = (function (options) {
     player.powerUp(options.power);
     return; 
   };
+
 
   return {
     hitEnemy: hitEnemy,
