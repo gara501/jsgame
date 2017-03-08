@@ -145,6 +145,26 @@ html, body {
   padding: .5em;
 }
 
+.wrapper .cards .card.vs{
+  background-image: none;
+}
+
+.wrapper .cards .card.vs h2 {
+  
+  color: #fff;
+  font-size: 8em;
+  margin-top: 50%;
+}
+
+.wrapper .cards .card.gamecard {
+  background-image: none;
+}
+
+.wrapper .cards .card.gamecard:hover,
+.wrapper .cards .card.vs:hover {
+  border: 10px solid hsla(0, 0%, 100%, .5);
+}
+
 .wrapper .cards .card:hover {
   border: 12px solid hsla(360, 100%, 50%, 1);
 }
@@ -170,7 +190,34 @@ html, body {
   animation: tilt 1s infinite linear;
 }
 /* End scenario Panel */
+/* Introlevel Panel */
+.introlevel {
+  background: #000;
+  bottom:0;
+  color: white;
+  left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
 
+.introlevel h2 {
+  font-size: 4em;
+  margin-top: 50%;
+  position: relative;
+  text-align: center;
+  animation: tilt 1s infinite linear;
+}
+/* End introlevel Panel */
+
+/* Battlefield Panel */
+.battlefield {
+  background-color: #f7f7f7;
+  height: 70%;
+  width: 100%;
+}
+/* End battlefield Panel */
 
 
 /* Animations */
