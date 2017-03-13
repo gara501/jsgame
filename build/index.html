@@ -67,58 +67,38 @@
         <div class="wrapper">
           <div class="cards">
             <div id="selectedHero" class="card hero gamecard">
-              <img src="assets/images/warrior1.jpg" alt="warrior1" />
+              <img class="avatar" src="assets/images/warrior1.jpg" alt="warrior1" />
               <div class="info">
                 <div>
                   <ul>
-                    <li>Name: <span>The Butcher</span></li>
-                    <li>Attack: <span>50</span></li>
-                    <li>Defense: <span>20</span></li>
-                    <li>Health: <span>100</span></li>
+                    <li>Name: <span class="name">The butcher</span></li>
+                    <li>Attack: <span class="attack">40</span></li>
+                    <li>Defense: <span class="defense">20</span></li>
+                    <li>Health: <span class="health">100</span></li>
                   </ul>
                 </div>
+              </div>
+              <div class="lifebar">
+                <div class="hurt"></div>
               </div>
             </div>
             <div class="card vs">
               <h2>VS</h2>
             </div>
-            <div id="enemy1" class="card enemy gamecard">
-              <img src="assets/images/enemy1.jpg" alt="enemy1" />
+            <div id="currentEnemy" class="card enemy gamecard">
+              <img class="avatar" src="assets/images/enemy1.jpg" alt="enemy1" />
               <div class="info">
                 <div>
                   <ul>
-                    <li>Name: <span>Nightmare</span></li>
-                    <li>Attack: <span>30</span></li>
-                    <li>Defense: <span>20</span></li>
-                    <li>Health: <span>100</span></li>
+                    <li>Name: <span class="name">Nightmare</span></li>
+                    <li>Attack: <span class="attack">30</span></li>
+                    <li>Defense: <span class="defense">20</span></li>
+                    <li>Health: <span class="health">100</span></li>
                   </ul>
                 </div>
               </div>
-            </div>
-            <div id="enemy2" class="card enemy gamecard hidden">
-              <img src="assets/images/enemy2.jpg" alt="enemy1" />
-              <div class="info">
-                <div>
-                  <ul>
-                    <li>Name: <span>Nightmare</span></li>
-                    <li>Attack: <span>30</span></li>
-                    <li>Defense: <span>20</span></li>
-                    <li>Health: <span>100</span></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div id="enemy3" class="card enemy gamecard hidden">
-              <img src="assets/images/enemy3.jpg" alt="enemy1" />
-              <div class="info">
-                <div>
-                  <ul>
-                    <li>Name: <span>Nightmare</span></li>
-                    <li>Attack: <span>30</span></li>
-                    <li>Defense: <span>20</span></li>
-                    <li>Health: <span>100</span></li>
-                  </ul>
-                </div>
+              <div class="lifebar">
+                <div class="hurt"></div>
               </div>
             </div>
           </div>

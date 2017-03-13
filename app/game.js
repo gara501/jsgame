@@ -9,12 +9,7 @@ var Game = (function (options) {
     var sender = options.sender;
     var receiver = options.receiver;
     options.receiver.decreaseHealth(options.hit);
-
-    if (receiver.health < 0) {
-      return options.sender.name + ' Wins!';
-    }
-
-    return; 
+    return true; 
   };
 
   function restart(options) {
