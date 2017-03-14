@@ -1,0 +1,304 @@
+/* Base elements */
+html {
+  box-sizing: border-box;
+  font-family: 'VT323', monospace;
+}
+
+html, body {
+  height: 100vh;
+}
+
+.button {
+  border-radius: .2em;
+  box-shadow: 0 .5em .25em rgba(0,0,0, .5);
+  color: #fff;
+  text-shadow: 0 .5em .5em rgba(0,0,0, .5);
+  font-size: 125%;
+  line-height: 1.5;
+  transition: .2s;
+}
+
+.button:hover {
+  background: #58a linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+}
+
+.button:active {
+  background: #58d linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+}
+/* End Base elements */
+
+/* General Classes */
+.hidden {
+  display: none !important;
+}
+.container {
+  display: block;
+  padding: 15px;
+}
+/* End general Classes */
+
+/* Intro Panel */
+.intro {
+  background: #000;
+  display: flex;
+  flex-flow: column wrap;
+  height: 100vh;
+  width: 100%;
+}
+
+.intro h1 {
+  font-size: 4rem;
+  color: #ffc;
+  text-align: center;
+  animation: glow 1s infinite linear;
+  text-transform: uppercase;
+}
+
+.warriors {
+  display: flex;
+  flex-grow: row wrap;
+  justify-content: center;
+}
+
+.warriors img {
+  height: 400px;
+  margin-top: 100px;
+}
+
+.intro button {
+  display: block;
+  margin: 100px auto 0 auto;
+  width: 200px;
+}
+
+@media (max-width: 870px) {
+  .warriors img {
+    height: 300px;
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .warriors img {
+    height: 200px;
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 400px) {
+  .warriors img {
+    height: 100px;
+    margin-top: 100px;
+  }
+}
+
+/* End Intro Panel */
+
+/* Scenario Panel */
+
+.scenario {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100vh;
+}
+
+.wrapper {
+  background-color: #f7f7f7;
+  height: 70%;
+  padding: 20px 0 0 0;
+  width: 100%;
+}
+
+.wrapper .cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.wrapper .cards .card {
+  background-color:black;
+  background-image: 
+  radial-gradient(circle at 100% 150%, black 24%, white 25%, white 28%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, black 24%, white 25%, white 28%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, white 10%, black 11%, black 23%, white 24%, white 30%, black 31%, black 43%, white 44%, white 50%, black 51%, black 63%, white 64%, white 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, white 5%, black 6%, black 15%, white 16%, white 20%, black 21%, black 30%, white 31%, white 35%, black 36%, black 45%, white 46%, white 49%, transparent 50%, transparent),
+  radial-gradient(circle at 0    50%, white 5%, black 6%, black 15%, white 16%, white 20%, black 21%, black 30%, white 31%, white 35%, black 36%, black 45%, white 46%, white 49%, transparent 50%, transparent);
+  background-size:100px 50px;
+  border: 10px solid hsla(0, 0%, 100%, .5);
+  border-radius: .5rem;
+  transition: all .2s; 
+  width: 30%;
+  max-width: 283px;
+}
+
+.wrapper .cards .card img {
+  max-height: 356px;
+  min-height: 356px;
+  width: 100%;
+}
+
+.wrapper .cards .card .info {
+  background: #fff;
+  width: 100%;
+}
+
+.wrapper .cards .card .info div {
+  padding: .5em;
+}
+
+.wrapper .cards .card.vs{
+  background-image: none;
+}
+
+.wrapper .cards .card.vs h2 {
+  
+  color: #fff;
+  font-size: 8em;
+  margin-top: 50%;
+}
+
+.wrapper .cards .card.gamecard {
+  background-image: none;
+}
+
+.wrapper .cards .card.gamecard:hover,
+.wrapper .cards .card.vs:hover {
+  border: 10px solid hsla(0, 0%, 100%, .5);
+}
+
+.wrapper .cards .card:hover {
+  border: 10px solid hsla(360, 100%, 50%, 1);
+}
+
+.wrapper h2 {
+  animation: glow 1s infinite linear;
+  font-size: 3rem;
+  margin-bottom: .5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.lifebar {
+  background-color: green;
+  height: 20px;
+  max-width: 100%;
+  position: relative;
+}
+
+.lifebar .hurt {
+  background-color: red;
+  height: 20px;
+  max-width: 100%;
+  position: absolute;
+  right: 0;
+  transition: all 1s linear;
+}
+               
+.console {
+  color: green;
+  background-color: #000;
+  height: 30%;
+  width: 100%;
+}
+
+.console p:before {
+  content: '-> ';
+  animation: tilt 1s infinite linear;
+}
+
+ul.answers {
+  padding: 0 0 0 20px;
+}
+
+ul.answers li {
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+ul.answers li:hover {
+  color: white;
+}
+
+.level-title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+/* End scenario Panel */
+/* Introlevel Panel */
+.introlevel {
+  background: #000;
+  bottom:0;
+  color: white;
+  left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.introlevel h2 {
+  font-size: 4em;
+  margin-top: 40%;
+  position: relative;
+  text-align: center;
+  animation: tilt 1s infinite linear;
+}
+/* End introlevel Panel */
+
+/* Game Over */
+h1.gameover {
+  font-size: 3em;
+  margin-top: 1em;
+  text-align: center;
+}
+/* End Game Over */
+
+/* Battlefield Panel */
+.battlefield {
+  background-color: #f7f7f7;
+  height: 70%;
+  width: 100%;
+}
+/* End battlefield Panel */
+
+/* Win Panel */
+.win {
+  background: #000;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.win h2 {
+  animation: glow 1s infinite linear;
+  color: white;
+  font-size: 3em;
+  margin-top: 1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.win img {
+  margin: 0 auto;
+  width: 30em;
+}
+/* End Win Panel */
+
+/* Animations */
+@keyframes glow {
+  50% {
+    text-shadow: 0 0 .1em, 0 0 .3em;
+  }
+}
+
+@keyframes tilt {
+  50% {
+    opacity: 0;
+  }
+}
