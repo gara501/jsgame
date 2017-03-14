@@ -71,14 +71,14 @@
       "correct": "b"
     },
     "eight": {
-      "question": "If you compare null === undefined and null == undefined what is the result?",
+      "question": "If you compare null == undefined and null = undefined what is the result?",
       "answers": {
         "a": "True",
         "b": "False",
-        "c": "Null"
+        "c": "Error"
       },
       "level": "2",
-      "correct": "b"
+      "correct": "c"
     },
     "nine": {
       "question": "A function parameter is:",

@@ -10,6 +10,7 @@ var Screen = (function (options) {
   var cardSelectionPanel = document.querySelector('.card-selection');
   var consolePanel = document.querySelector('.console');
   var gameOverPanel = document.querySelector('.gameover');
+  var winPanel = document.querySelector('.win');
   var battlefieldPanel = document.querySelector('.battlefield');
   var introButton = introPanel.getElementsByTagName('button');
   var selectedHeroDom = document.getElementById('selectedHero');
@@ -40,27 +41,34 @@ var Screen = (function (options) {
       index: 'level2',
       title: 'Level 2',
       intro: 'Level 2 starting, get ready!',
-      data: level1q  
+      data: level2q  
     },
     level3: 
     {
       index: 'level3',
       title: 'Level 3',
       intro: 'Level 3 starting, get ready!',
-      data: level1q  
+      data: level3q  
     },
   };
 
   // Music and Sounds
   var soundIntro = new Audio('assets/music/intro.mp3');
+  var soundHit = new Audio('assets/music/hit2.wav');
+  var soundWin = new Audio('assets/music/level1.mp3');
+  var soundGameOver = new Audio('assets/music/gameOver.mp3');
   var soundButton = new Audio('assets/music/button.wav');
+  var soundWarrior1 = new Audio('assets/music/w1.wav');
+  var soundWarrior2 = new Audio('assets/music/w2.wav');
+  var soundWarrior3 = new Audio('assets/music/w3.wav');
+  var soundGame = new Audio('assets/music/game.mp3');
   
   addListeners();
   cardListeners();
   init();
 
   function init() {
-    introMusic({ start: true });
+    sound({ start: true }, soundIntro);
     loadQuestions();
   }
 
@@ -155,65 +163,58 @@ var Screen = (function (options) {
       case levels.level1.index :
       if (levels.level1.data[question].correct == answer) {
         // Correct
-        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack});
-        console.log('CORRECT');
+        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack}, levels.level1);
       } else {
         // Bad answer
-        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack});
-        console.log('INCORRECT');
+        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack}, levels.level1);
       }
       break;
       case levels.level2.index :
       if (levels.level2.data[question].correct == answer) {
         // Correct
-        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack});
-        console.log('CORRECT');
+        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack}, levels.level2);
       } else {
         // Bad answer
-        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack});
-        console.log('INCORRECT');
-      }
-
-      if (currentPlayer.health <= 0) {
-        console.log('YOU LOSE!');
+        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack}, levels.level2);
       }
       break;
       case levels.level3.index :
       if (levels.level3.data[question].correct == answer) {
         // Correct
-        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack});
-        console.log('CORRECT');
+        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack}, levels.level3);
       } else {
         // Bad answer
-        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack});
-        console.log('INCORRECT');
+        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack}, levels.level3);
       }
       break;
 
     }
   }
 
-  function action(options) {
+  function action(options, level) {
     var hit = null;
     hit = gameApi.hitEnemy(options);
     updateScreen();
     clearConsole();
 
     if (currentEnemy.health <= 0) {
-      currentLevel++;
-      nextLevel(currentLevel);
+      if (currentEnemy.level === 3 ) {
+        winGame();
+      } else {
+        currentLevel++;
+        nextLevel(currentLevel);
+      }
     } else {
       if (currentPlayer.health <= 0) {
         gameOver();
       } else {
-        if (currentQuestion < levels.level1.data.length - 1) {
+        if (currentQuestion < level.data.length - 1) {
           currentQuestion++;
-          nextQuestion(levels.level1, currentQuestion);
+          nextQuestion(level, currentQuestion);
         } else {
           currentLevel++;
           nextLevel(currentLevel);
-        }
-        
+        } 
       }
     }
   }
@@ -224,20 +225,27 @@ var Screen = (function (options) {
     h1.innerText = 'GAME OVER - to restart reload the page';
     h1.classList.add('gameover');
     consolePanel.appendChild(h1);
+    sound({ stop: true }, soundGame);
+    sound({start: true}, soundGameOver);
+  }
+
+  function winGame() {
+    clearConsole();
+    winPanel.classList.remove('hidden');
+    sound({ stop: true }, soundGame);
+    sound({start: true}, soundWin);
   }
 
   function nextLevel() {
-
+    currentQuestion = 0;
     if (currentLevel === 2) {
       enterScene(levels.level2);
       showBattle(levels.level2.index);
     }
-    console.log('LEVEL EEEE');
-  }
-
-
-  function sendConsoleMessage(message) {
-    console.log(message);
+    if (currentLevel === 3) {
+      enterScene(levels.level3);
+      showBattle(levels.level3.index);
+    }
   }
 
   function showBattle(level) {
@@ -283,7 +291,10 @@ var Screen = (function (options) {
       a.addEventListener( 'click', function () {
           switch (a.id) {
             case 'start':
-            introMusic({ stop: true });
+            sound({ stop: true }, soundIntro);
+            sound({ start: true }, soundButton);
+            sound({ start: true }, soundGame);
+            transition(scenarioPanel);
           }
       }, false );
     });
@@ -293,6 +304,7 @@ var Screen = (function (options) {
     [].forEach.call( document.querySelectorAll( 'li' ), function ( a ) {
       a.addEventListener( 'click', function () {
           processAnswer(a.dataset.answer, a.dataset.question, a.dataset.level);
+          sound({ start: true }, soundHit);
       }, false );
     });
   }
@@ -309,6 +321,7 @@ var Screen = (function (options) {
                 defense: 20,
                 avatar: 'assets/images/warrior1.jpg'
             });
+            sound({ start: true }, soundWarrior1);
             enterScene(levels.level1);
             break;
             case 'hero2':
@@ -319,6 +332,7 @@ var Screen = (function (options) {
                 defense: 30,
                 avatar: 'assets/images/warrior2.jpg'
             });
+            sound({ start: true }, soundWarrior2);
             enterScene(levels.level1);
             break;
             case 'hero3':
@@ -329,6 +343,7 @@ var Screen = (function (options) {
                 defense: 40,
                 avatar: 'assets/images/warrior3.jpg'
             });
+            sound({ start: true }, soundWarrior3);
             enterScene(levels.level1);
             break;
           }
@@ -344,18 +359,16 @@ var Screen = (function (options) {
     to.classList.remove('hidden');
   } 
 
-  function introMusic(music) {
+  function sound(music, soundFile) {
     if (music.start === true) {
-      soundIntro.play();
+      soundFile.play();
     }
     if (music.stop === true) {
-      soundIntro.pause();
-      soundIntro.currentTime = 0;
-      soundButton.play();
-      transition(scenarioPanel);
+      soundFile.pause();
+      soundFile.currentTime = 0;
     }
   }
-  
+
   return;
 })();
 
