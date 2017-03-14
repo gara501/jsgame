@@ -7,10 +7,18 @@ var Characters = (function (options) {
         this.defense = options.defense || 10;
         this.name = options.name || 'Jhon Doe';
         this.playerType = options.playerType || 'hero';
+        this.level = options.level || 1;
+        this.avatar = options.avatar || '';
         
         this.decreaseHealth = function(hit) {
-          this.health -= hit;
+          if (this.health > 0) {
+            this.health -= hit;
+          } 
+          if (this.health <= 0) {
+            this.health = 0;
+          }
         };
+
 
         this.powerUp = function(power) {
           this.attack += power;

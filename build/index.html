@@ -19,10 +19,10 @@
     </div>
     <div class="scenario hidden">
       <div class="wrapper">
-        <div class="container">
+        <div class="container card-selection">
           <h2>Select your Hero</h2>
           <div class="cards">
-            <div class="card">
+            <div id="hero1" class="card hero">
               <img src="assets/images/warrior1.jpg" alt="warrior1" />
               <div class="info">
                 <div>
@@ -35,27 +35,27 @@
                 </div>
               </div>
             </div>
-            <div class="card">
+            <div id="hero2" class="card hero">
               <img src="assets/images/warrior2.jpg" alt="warrior2" />
               <div class="info">
                 <div>
                   <ul>
-                    <li>Name: <span>Nightmare</span></li>
+                    <li>Name: <span>Magician</span></li>
                     <li>Attack: <span>30</span></li>
-                    <li>Defense: <span>20</span></li>
+                    <li>Defense: <span>30</span></li>
                     <li>Health: <span>100</span></li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div class="card">
+            <div id="hero3" class="card hero">
               <img src="assets/images/warrior3.jpg" alt="warrior3" />
               <div class="info">
                 <div>
                   <ul>
-                    <li>Name: <span>Akara</span></li>
-                    <li>Attack: <span>20</span></li>
-                    <li>Defense: <span>50</span></li>
+                    <li>Name: <span>The Warrior</span></li>
+                    <li>Attack: <span>30</span></li>
+                    <li>Defense: <span>40</span></li>
                     <li>Health: <span>100</span></li>
                   </ul>
                 </div>
@@ -63,7 +63,52 @@
             </div>
           </div>
         </div>
+        <div class="battlefield hidden">
+        <div class="wrapper">
+          <div class="cards">
+            <div id="selectedHero" class="card hero gamecard">
+              <img class="avatar" src="assets/images/warrior1.jpg" alt="warrior1" />
+              <div class="info">
+                <div>
+                  <ul>
+                    <li>Name: <span class="name">The butcher</span></li>
+                    <li>Attack: <span class="attack">40</span></li>
+                    <li>Defense: <span class="defense">20</span></li>
+                    <li>Health: <span class="health">100</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="lifebar">
+                <div class="hurt"></div>
+              </div>
+            </div>
+            <div class="card vs">
+              <h2>VS</h2>
+            </div>
+            <div id="currentEnemy" class="card enemy gamecard">
+              <img class="avatar" src="assets/images/enemy1.jpg" alt="enemy1" />
+              <div class="info">
+                <div>
+                  <ul>
+                    <li>Name: <span class="name">Inferno</span></li>
+                    <li>Attack: <span class="attack">30</span></li>
+                    <li>Defense: <span class="defense">20</span></li>
+                    <li>Health: <span class="health">100</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="lifebar">
+                <div class="hurt"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      </div>
+      <div class="introlevel hidden">
+        <h2>Get Ready</h2>
+      </div>
+      
       <div class="console">
         <div class="container">
           <p>Welcome to Javascript warriors, please select your hero to join this dangerous journey!.</p>

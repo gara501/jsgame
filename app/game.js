@@ -1,23 +1,26 @@
 // Using Module Pattern
 'use strict';
+import { apiCharacters } from "./characters.js";
 
 var Game = (function (options) {
+  var apiChar =  new apiCharacters();
+
   function hitEnemy(options) {
     var sender = options.sender;
     var receiver = options.receiver;
     options.receiver.decreaseHealth(options.hit);
-
-    if (receiver.health < 0) {
-      return options.sender.name + ' Wins!';
-    }
-
-    return; 
+    return true; 
   };
 
   function restart(options) {
     options.player1.restart();
     options.player2.restart();
     return;
+  }
+
+  function createPlayer(playerData) {
+    var hero = apiChar.createPlayer(playerData);
+    return hero;
   }
 
   function powerUp(options) {
@@ -28,6 +31,7 @@ var Game = (function (options) {
 
 
   return {
+    createPlayer: createPlayer,
     hitEnemy: hitEnemy,
     powerUp: powerUp,
     restart: restart

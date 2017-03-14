@@ -105,13 +105,14 @@ html, body {
 .wrapper {
   background-color: #f7f7f7;
   height: 70%;
+  padding: 20px 0 0 0;
   width: 100%;
 }
 
 .wrapper .cards {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .wrapper .cards .card {
@@ -145,8 +146,28 @@ html, body {
   padding: .5em;
 }
 
+.wrapper .cards .card.vs{
+  background-image: none;
+}
+
+.wrapper .cards .card.vs h2 {
+  
+  color: #fff;
+  font-size: 8em;
+  margin-top: 50%;
+}
+
+.wrapper .cards .card.gamecard {
+  background-image: none;
+}
+
+.wrapper .cards .card.gamecard:hover,
+.wrapper .cards .card.vs:hover {
+  border: 10px solid hsla(0, 0%, 100%, .5);
+}
+
 .wrapper .cards .card:hover {
-  border: 12px solid hsla(360, 100%, 50%, 1);
+  border: 10px solid hsla(360, 100%, 50%, 1);
 }
 
 .wrapper h2 {
@@ -155,9 +176,24 @@ html, body {
   margin-bottom: .5em;
   text-align: center;
   text-transform: uppercase;
-  
 }
 
+.lifebar {
+  background-color: green;
+  height: 20px;
+  max-width: 100%;
+  position: relative;
+}
+
+.lifebar .hurt {
+  background-color: red;
+  height: 20px;
+  max-width: 100%;
+  position: absolute;
+  right: 0;
+  transition: all 1s linear;
+}
+               
 .console {
   color: green;
   background-color: #000;
@@ -169,9 +205,63 @@ html, body {
   content: '-> ';
   animation: tilt 1s infinite linear;
 }
+
+ul.answers {
+  padding: 0 0 0 20px;
+}
+
+ul.answers li {
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+ul.answers li:hover {
+  color: white;
+}
+
+.level-title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
 /* End scenario Panel */
+/* Introlevel Panel */
+.introlevel {
+  background: #000;
+  bottom:0;
+  color: white;
+  left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
 
+.introlevel h2 {
+  font-size: 4em;
+  margin-top: 40%;
+  position: relative;
+  text-align: center;
+  animation: tilt 1s infinite linear;
+}
+/* End introlevel Panel */
 
+/* Game Over */
+h1.gameover {
+  font-size: 3em;
+  margin-top: 1em;
+  text-align: center;
+}
+/* End Game Over */
+
+/* Battlefield Panel */
+.battlefield {
+  background-color: #f7f7f7;
+  height: 70%;
+  width: 100%;
+}
+/* End battlefield Panel */
 
 /* Animations */
 @keyframes glow {

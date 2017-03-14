@@ -1,0 +1,154 @@
+{
+  "questions": {
+    "one": {
+      "question": "what is hoisting?",
+      "answers": {
+        "a": "A way to maintain the scope in the application",
+        "b": "Default behavior of moving declarations to the top.",
+        "c": "A way to implement objects"
+      },
+      "level": "1",
+      "correct": "b"
+    },
+    "two": {
+      "question": "what is scope?",
+      "answers": {
+        "a": "Is the set of variables, objects, and functions you have access to",
+        "b": "Is how you can access to a variable",
+        "c": "Is a way to modify an object"
+      },
+      "level": "1",
+      "correct": "a"
+    },
+    "three": {
+      "question": "What is a global variable?",
+      "answers": {
+        "a": "Is a variable defined in the head of the page",
+        "b": "Is a variable that you can access in any place of the application",
+        "c": "Is a variable without scope"
+      },
+      "level": "1",
+      "correct": "a"
+    },
+    "four": {
+      "question": "what is the result for 1 + \"1\"?",
+      "answers": {
+        "a": "\"2\"",
+        "b": "11",
+        "c": "\"11\""
+      },
+      "level": "1",
+      "correct": "c"
+    },
+    "five": {
+      "question": "what is the result of this: typeof [1,2,3,4]",
+      "answers": {
+        "a": "Array",
+        "b": "String",
+        "c": "Object"
+      },
+      "level": "1",
+      "correct": "b"
+    },
+    "six": {
+      "question": "what is the result of this: typeof null",
+      "answers": {
+        "a": "Null",
+        "b": "Undefined",
+        "c": "Object"
+      },
+      "level": "2",
+      "correct": "c"
+    },
+    "seven": {
+      "question": "If you compare null === undefined and null == undefined what is the result?",
+      "answers": {
+        "a": "True",
+        "b": "False",
+        "c": "Null"
+      },
+      "level": "2",
+      "correct": "b"
+    },
+    "eight": {
+      "question": "If you compare null === undefined and null == undefined what is the result?",
+      "answers": {
+        "a": "True",
+        "b": "False",
+        "c": "Null"
+      },
+      "level": "2",
+      "correct": "b"
+    },
+    "nine": {
+      "question": "A function parameter is:",
+      "answers": {
+        "a": "Names listed in the function definition",
+        "b": "Values received by the function",
+        "c": "Values that the function returns"
+      },
+      "level": "2",
+      "correct": "a"
+    },
+    "ten": {
+      "question": "The definition var a = function() runs equal that function a()?",
+      "answers": {
+        "a": "Yes",
+        "b": "No",
+        "c": "Is the same"
+      },
+      "level": "2",
+      "correct": "b"
+    },
+    "eleven": {
+      "question": "What is the result of this regular expression: /e/.exec(\"The best things in life are free!\");",
+      "answers": {
+        "a": "e",
+        "b": "True",
+        "c": "Undefined"
+      },
+      "level": "3",
+      "correct": "a"
+    },
+    "twelve": {
+      "question": "If you are using \"use strict\" what is the result for this definition: x = 4*5;",
+      "answers": {
+        "a": "20",
+        "b": "Error",
+        "c": "Undefined"
+      },
+      "level": "3",
+      "correct": "b"
+    },
+    "thirteen": {
+      "question": "If you are using \"use strict\" what is the result for this definition: var public = 1500;",
+      "answers": {
+        "a": "1500",
+        "b": "Error",
+        "c": "Undefined"
+      },
+      "level": "3",
+      "correct": "b"
+    },
+    "fourteen": {
+      "question": "If you have: var person = {firstName:\"John\", lastName:\"Doe\", age:46}, what is the result for: person.length",
+      "answers": {
+        "a": "Error",
+        "b": "Undefined",
+        "c": "2"
+      },
+      "level": "3",
+      "correct": "b"
+    },
+    "fifteen": {
+      "question": "What means that an object can be mutable?",
+      "answers": {
+        "a": "They are addressed by reference, not by value.",
+        "b": "They are addressed by value, not by reference.",
+        "c": "They are addressed by reference and value."
+      },
+      "level": "3",
+      "correct": "a"
+    }
+  }
+}
