@@ -167,7 +167,7 @@ html, body {
 }
 
 .wrapper .cards .card:hover {
-  border: 12px solid hsla(360, 100%, 50%, 1);
+  border: 10px solid hsla(360, 100%, 50%, 1);
 }
 
 .wrapper h2 {
@@ -181,12 +181,14 @@ html, body {
 .lifebar {
   background-color: green;
   height: 20px;
+  max-width: 100%;
   position: relative;
 }
 
 .lifebar .hurt {
   background-color: red;
   height: 20px;
+  max-width: 100%;
   position: absolute;
   right: 0;
   transition: all 1s linear;
@@ -244,6 +246,14 @@ ul.answers li:hover {
   animation: tilt 1s infinite linear;
 }
 /* End introlevel Panel */
+
+/* Game Over */
+h1.gameover {
+  font-size: 3em;
+  margin-top: 1em;
+  text-align: center;
+}
+/* End Game Over */
 
 /* Battlefield Panel */
 .battlefield {

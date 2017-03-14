@@ -13,8 +13,12 @@ var Characters = (function (options) {
         this.decreaseHealth = function(hit) {
           if (this.health > 0) {
             this.health -= hit;
+          } 
+          if (this.health <= 0) {
+            this.health = 0;
           }
         };
+
 
         this.powerUp = function(power) {
           this.attack += power;

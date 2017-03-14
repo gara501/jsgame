@@ -80,37 +80,21 @@ var Screen = (function (options) {
     });
   }
 
-  function showIntro(introNumber) {
-    if (introNumber === levels.level1.index) {
-      introLevelPanel.children[0].innerText = levels.level1.intro;
-      introLevelPanel.classList.remove('hidden');
-      window.setTimeout(function() {
-        introLevelPanel.classList.add('hidden');
-        showBattle(levels.level1.index);
-        printQuestion(levels.level1);
-      }, 2000);
-      
-    }
-    if (introNumber === levels.level2.index) {
-      printQuestion(levels.level2);
-    }
-    if (introNumber === levels.level3.index) {
-      printQuestion(levels.level3);
-    }
+  function enterScene(level) {
+    introLevelPanel.children[0].innerText = level.intro;
+    introLevelPanel.classList.remove('hidden');
+    window.setTimeout(function() {
+      introLevelPanel.classList.add('hidden');
+      showBattle(level.index);
+      nextQuestion(level, currentQuestion)
+    }, 2000);
   }
 
   function clearConsole() { 
     consolePanel.innerText = '';
   }
 
-  function printQuestion(levelData) {
-    nextQuestion(levelData, currentQuestion);
-    answerListeners();
-  }
-
   function nextQuestion(levelData, question) {
-
-    console.log(levelData.data);
     var levelTitle = document.createElement('h3');
     levelTitle.innerHTML = levelData.title;
     levelTitle.classList.add('level-title');
@@ -119,10 +103,9 @@ var Screen = (function (options) {
     var questions = levelData.data;
     for (var c = 0; c < questions.length; c++) {
       if (c === question) {
-        var currentId = c;
         var q = document.createElement('p');
         q.setAttribute('data-level', levelData.index);
-        q.setAttribute('data-question', currentId);
+        q.setAttribute('data-question', c);
         q.innerText = questions[c].question;
 
         var answers = document.createElement('ul');
@@ -133,7 +116,7 @@ var Screen = (function (options) {
             var answer = document.createElement('li');
             answer.innerHTML = questions[c].answers[key];
             answer.setAttribute('data-answer', key);
-            answer.setAttribute('data-question', currentId);
+            answer.setAttribute('data-question', c);
             answer.setAttribute('data-level', levelData.index);
             answers.appendChild(answer);
           }
@@ -157,6 +140,7 @@ var Screen = (function (options) {
     selectedHeroDom.querySelector('.defense').innerText = currentPlayer.defense;
     selectedHeroDom.querySelector('.attack').innerText = currentPlayer.attack;
     selectedHeroDom.querySelector('.health').innerText = currentPlayer.health;
+    selectedHeroDom.querySelector('.avatar').src = currentPlayer.avatar;
     
     var heroBarValue = 100 - currentPlayer.health;
     var enemyBarValue = 100 - currentEnemy.health;
@@ -167,24 +151,60 @@ var Screen = (function (options) {
   }
 
   function processAnswer(answer, question, level) {
-    var hit = null;
     switch (level) {
       case levels.level1.index :
       if (levels.level1.data[question].correct == answer) {
         // Correct
-        hit = gameApi.hitEnemy({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack})
+        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack});
         console.log('CORRECT');
       } else {
         // Bad answer
-        hit = gameApi.hitEnemy({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack})
+        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack});
+        console.log('INCORRECT');
+      }
+      break;
+      case levels.level2.index :
+      if (levels.level2.data[question].correct == answer) {
+        // Correct
+        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack});
+        console.log('CORRECT');
+      } else {
+        // Bad answer
+        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack});
         console.log('INCORRECT');
       }
 
-      updateScreen();
-      clearConsole();
-
       if (currentPlayer.health <= 0) {
         console.log('YOU LOSE!');
+      }
+      break;
+      case levels.level3.index :
+      if (levels.level3.data[question].correct == answer) {
+        // Correct
+        action({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack});
+        console.log('CORRECT');
+      } else {
+        // Bad answer
+        action({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack});
+        console.log('INCORRECT');
+      }
+      break;
+
+    }
+  }
+
+  function action(options) {
+    var hit = null;
+    hit = gameApi.hitEnemy(options);
+    updateScreen();
+    clearConsole();
+
+    if (currentEnemy.health <= 0) {
+      currentLevel++;
+      nextLevel(currentLevel);
+    } else {
+      if (currentPlayer.health <= 0) {
+        gameOver();
       } else {
         if (currentQuestion < levels.level1.data.length - 1) {
           currentQuestion++;
@@ -195,46 +215,21 @@ var Screen = (function (options) {
         }
         
       }
-
-      break;
-      case levels.level2.index :
-      if (levels.level2.data[question].correct == answer) {
-        // Correct
-        hit = gameApi.hitEnemy({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack})
-      } else {
-        // Bad answer
-        hit = gameApi.hitEnemy({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack})
-      }
-
-      if (currentPlayer.health <= 0) {
-        console.log('YOU LOSE!');
-      }
-    
-      updateScreen();
-      
-      break;
-      case levels.level3.index :
-      if (levels.level3.data[question].correct == answer) {
-        // Correct
-        hit = gameApi.hitEnemy({sender: currentPlayer, receiver: currentEnemy, hit: currentPlayer.attack})
-      } else {
-        // Bad answer
-        hit = gameApi.hitEnemy({sender: currentEnemy, receiver: currentPlayer, hit: currentEnemy.attack})
-      }
-
-      if (currentPlayer.health <= 0) {
-        console.log('YOU LOSE!');
-      }
-    
-      updateScreen();
-      
-      break;
-
     }
   }
 
+  function gameOver() {
+    clearConsole();
+    var h1 = document.createElement('h1');
+    h1.innerText = 'GAME OVER - to restart reload the page';
+    h1.classList.add('gameover');
+    consolePanel.appendChild(h1);
+  }
+
   function nextLevel() {
+
     if (currentLevel === 2) {
+      enterScene(levels.level2);
       showBattle(levels.level2.index);
     }
     console.log('LEVEL EEEE');
@@ -262,16 +257,22 @@ var Screen = (function (options) {
     if (level === levels.level2.index) {
       clearConsole();
       battlefieldPanel.classList.remove('hidden');
-      currentEnemy.name = 'Outworld',
+      currentEnemy.name = 'Outworld';
       currentEnemy.attack = 50;
       currentEnemy.defense = 30;
-      currentEnemy.health = 100;
+      currentEnemy.health = 120;
       currentEnemy.level = 2
       currentEnemy.avatar = 'assets/images/enemy2.jpg';
     }
     if (level === levels.level3.index) {
       clearConsole();
       battlefieldPanel.classList.remove('hidden');
+      currentEnemy.name = 'Despero';
+      currentEnemy.attack = 100;
+      currentEnemy.defense = 50;
+      currentEnemy.health = 150;
+      currentEnemy.level = 3
+      currentEnemy.avatar = 'assets/images/enemy3.jpg';
     }
 
     updateScreen();
@@ -305,29 +306,33 @@ var Screen = (function (options) {
                 name: 'The Butcher',
                 playerType: 'hero',
                 attack: 50,
-                defense: 20
+                defense: 20,
+                avatar: 'assets/images/warrior1.jpg'
             });
-            showIntro(levels.level1.index);
+            enterScene(levels.level1);
             break;
             case 'hero2':
             currentPlayer = gameApi.createPlayer({
-                name: 'Nightmare',
+                name: 'Magician',
                 playerType: 'hero',
                 attack: 30,
-                defense: 20
+                defense: 30,
+                avatar: 'assets/images/warrior2.jpg'
             });
-            showIntro(levels.level2.index);
+            enterScene(levels.level1);
             break;
             case 'hero3':
             currentPlayer = gameApi.createPlayer({
-                name: 'Akara',
+                name: 'The Warrior',
                 playerType: 'hero',
-                attack: 20,
-                defense: 50
+                attack: 30,
+                defense: 40,
+                avatar: 'assets/images/warrior3.jpg'
             });
-            showIntro(levels.level3.index);
+            enterScene(levels.level1);
             break;
           }
+          
       }, false );
     });
   }
