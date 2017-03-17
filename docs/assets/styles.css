@@ -58,6 +58,7 @@ html, body {
   display: flex;
   flex-grow: row wrap;
   justify-content: center;
+  width: 100%;
 }
 
 .warriors img {
@@ -67,7 +68,7 @@ html, body {
 
 .intro button {
   display: block;
-  margin: 100px auto 0 auto;
+  margin: 20px auto 0 auto;
   width: 200px;
 }
 
@@ -117,7 +118,7 @@ html, body {
 
 .wrapper .cards .card {
   background-color:black;
-  background-image: 
+  background-image:
   radial-gradient(circle at 100% 150%, black 24%, white 25%, white 28%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent),
   radial-gradient(circle at 0    150%, black 24%, white 25%, white 28%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent),
   radial-gradient(circle at 50%  100%, white 10%, black 11%, black 23%, white 24%, white 30%, black 31%, black 43%, white 44%, white 50%, black 51%, black 63%, white 64%, white 71%, transparent 71%, transparent),
@@ -126,7 +127,7 @@ html, body {
   background-size:100px 50px;
   border: 10px solid hsla(0, 0%, 100%, .5);
   border-radius: .5rem;
-  transition: all .2s; 
+  transition: all .2s;
   width: 30%;
   max-width: 283px;
 }
@@ -151,7 +152,7 @@ html, body {
 }
 
 .wrapper .cards .card.vs h2 {
-  
+
   color: #fff;
   font-size: 8em;
   margin-top: 50%;
@@ -193,7 +194,7 @@ html, body {
   right: 0;
   transition: all 1s linear;
 }
-               
+
 .console {
   color: green;
   background-color: #000;
