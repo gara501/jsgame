@@ -105,7 +105,7 @@ html, body {
 
 .wrapper {
   background-color: #f7f7f7;
-  height: 70%;
+  height: 85%;
   padding: 20px 0 0 0;
   width: 100%;
 }
@@ -198,7 +198,8 @@ html, body {
 .console {
   color: green;
   background-color: #000;
-  height: 30%;
+  height: 15%;
+  overflow: auto;
   width: 100%;
 }
 
